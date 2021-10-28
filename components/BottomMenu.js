@@ -16,15 +16,11 @@ export default function BottomMenu( props ) {
             </Pressable>
             <Pressable 
                 onPress={() => navigation.navigate('Details')}>
-                <MyIcons name='Bag' width="20" height="20" />
+                <MyIcons name='Write' width="20" height="20" />
             </Pressable>
             <Pressable 
                 onPress={() => navigation.navigate('Details')}>
-                <MyIcons name='heart' width="21" height="20" />
-            </Pressable>
-            <Pressable 
-                onPress={() => navigation.navigate('Details')}>
-                <MyIcons name='user' width="16" height="20" />
+                <MyIcons name='Settings' width="21" height="20" />
             </Pressable>
         </View>
     );

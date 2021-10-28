@@ -2,9 +2,9 @@ import React from 'react';
 import { TextInput, StyleSheet, Text, View } from 'react-native';
 import tailwind from 'tailwind-rn';
 import Header from '../components/Header';
-import PopularProductCarousel from '../components/PopularProductCarousel';
-import RecommmProductCarousel from '../components/RecommmProductCarousel';
-import CategoryCarousel from '../components/CategoryCarousel';
+// import PopularProductCarousel from '../components/PopularProductCarousel';
+// import RecommmProductCarousel from '../components/RecommmProductCarousel';
+// import CategoryCarousel from '../components/CategoryCarousel';
 import BottomMenu from '../components/BottomMenu';
 import MyIcons from '../components/myIcons';
 
@@ -16,7 +16,34 @@ export default function Home({ navigation }) {
         <View  style={tailwind('px-8 pt-10 pb-8 w-full h-full')}>
             <View  style={tailwind('relative w-full h-full')}>
                 <Header type='home' navigation={navigation} />
-                <View style={tailwind('mb-4')}>
+                
+                <BottomMenu  navigation={navigation} />
+            </View>
+        </View>
+    </View>
+  );
+};
+
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+  },
+  textBlack: {
+    color: '#1F2123',
+  },
+  textOrange: {
+    color: '#FF7324',
+  },
+  bgBlack: {
+    backgroundColor: '#1F2123',
+  },
+});
+
+
+{/* <View style={tailwind('mb-4')}>
                     <TextInput
                         style={tailwind('w-full h-10 bg-white p-6 rounded-xl mt-4 pl-12')}
                         placeholder="Search a product" />
@@ -37,32 +64,7 @@ export default function Home({ navigation }) {
                         <Text style={tailwind('text-sm text-black opacity-40')}>View All</Text>
                     </View>
                     <RecommmProductCarousel />
-                </View>
-                <BottomMenu  navigation={navigation} />
-            </View>
-        </View>
-    </View>
-  );
-};
-
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F7F8F8',
-  },
-  textBlack: {
-    color: '#1F2123',
-  },
-  textOrange: {
-    color: '#FF7324',
-  },
-  bgBlack: {
-    backgroundColor: '#1F2123',
-  },
-});
-
+                </View> */}
 
 
 

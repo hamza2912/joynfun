@@ -5,8 +5,8 @@ import ProductImageCarousel from '../components/ProductImageCarousel';
 import ProductDescription from '../components/ProductDescription';
 import Header from '../components/Header';
 import MyIcons from '../components/myIcons';
-import GetFurnitures from '../components/GetData';
-import firebase from "firebase";
+// import GetFurnitures from '../components/GetData';
+// import firebase from "firebase";
 
 function addToCart(quantity, product, navigation) {
     firebase

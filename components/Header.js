@@ -14,14 +14,12 @@ export default function Header( props ) {
             <View style={tailwind('flex flex-row justify-between items-center')}>
                 <Pressable 
                     onPress={() => navigation.navigate('Home')}>
-                    <MyIcons name='dashboard' width="20" height="20" />
+                    <MyIcons name='Dash' width="20" height="20" />
                 </Pressable>
-                <Text style={[tailwind('text-base font-semibold'),styles.textBlack]}>Home</Text>
-                <Image
-                    style={tailwind('w-8 h-8')}
-                    resizeMode="contain"
-                    source={require('../assets/avatar.png')}        
-                />
+                <Pressable 
+                    onPress={() => navigation.navigate('Home')}>
+                    <MyIcons name='Bell' width="20" height="20" />
+                </Pressable>
             </View>
         );
     }
