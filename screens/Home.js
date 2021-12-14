@@ -1,25 +1,83 @@
-import React from 'react';
-import { TextInput, StyleSheet, Text, View } from 'react-native';
+import React, { useRef, useEffect } from 'react';
+import { Animated, ImageBackground, StyleSheet, Text, View, Pressable, Dimensions  } from 'react-native';
 import tailwind from 'tailwind-rn';
-import Header from '../components/Header';
-// import PopularProductCarousel from '../components/PopularProductCarousel';
-// import RecommmProductCarousel from '../components/RecommmProductCarousel';
-// import CategoryCarousel from '../components/CategoryCarousel';
 import BottomMenu from '../components/BottomMenu';
 import MyIcons from '../components/myIcons';
+import Btn from '../components/Btn';
+import Category_menu from '../components/category_menu';
+import SideNav from '../components/Sidenav';
+import Header from '../components/Header';
+
 
 
 export default function Home({ navigation }) {
 
+  const [openSidebar, setOpenSidebar] = React.useState(false);
+
   return (
     <View style={styles.container}>
-        <View  style={tailwind('px-8 pt-10 pb-8 w-full h-full')}>
-            <View  style={tailwind('relative w-full h-full')}>
-                <Header type='home' navigation={navigation} />
-                
-                <BottomMenu  navigation={navigation} />
+
+        <View  style={tailwind('relative w-full h-full')}>
+          <ImageBackground 
+            source={require('../assets/background-images/sign.png')} 
+            style={tailwind('absolute w-full h-full')}  resizeMode="stretch" >
+            
+            <Header back={true} type='home' image={require('../assets/background-images/home.png')} title="Top Reads" openSidebar={setOpenSidebar}/>
+
+            <View style={tailwind('flex flex-row justify-between mt-8 px-6 flex-wrap')}>
+              <View style={[tailwind('m-2'), styles.wGrid]}>
+                <Pressable  style={[tailwind('w-full h-48 flex-col items-start rounded-lg overflow-hidden'), styles.bgOrange]}
+                  onPress={() => setOpenSidebar(false)}>
+                    <ImageBackground 
+                      source={require('../assets/background-images/car.png')} 
+                      style={tailwind('absolute w-full h-full px-4 py-4')}  resizeMode="stretch" >
+                      <Text style={tailwind('text-sm font-medium text-white')}>My New Car</Text>
+                      <Text style={tailwind('text-xs text-white mt-2')}>Hussain Ismail Zaidi</Text>
+                    </ImageBackground>
+                </Pressable>
+              </View>
+              <View style={[tailwind('m-2'), styles.wGrid]}>
+                <Pressable  style={[tailwind('w-full h-48 flex-col items-start rounded-lg overflow-hidden'), styles.bgOrange]}
+                  onPress={() => setOpenSidebar(false)}>
+                    <ImageBackground 
+                      source={require('../assets/background-images/childhood.png')} 
+                      style={tailwind('absolute w-full h-full px-4 py-4')}  resizeMode="stretch" >
+                      <Text style={tailwind('text-sm font-medium text-white')}>My New Car</Text>
+                      <Text style={tailwind('text-xs text-white mt-2')}>Hussain Ismail Zaidi</Text>
+                    </ImageBackground>
+                </Pressable>
+              </View>
+              <View style={[tailwind('m-2'), styles.wGrid]}>
+                <Pressable  style={[tailwind('w-full h-48 flex-col items-start rounded-lg overflow-hidden'), styles.bgOrange]}
+                  onPress={() => setOpenSidebar(false)}>
+                    <ImageBackground 
+                      source={require('../assets/background-images/plant.png')} 
+                      style={tailwind('absolute w-full h-full px-4 py-4')}  resizeMode="stretch" >
+                      <Text style={tailwind('text-sm font-medium text-white')}>My New Car</Text>
+                      <Text style={tailwind('text-xs text-white mt-2')}>Hussain Ismail Zaidi</Text>
+                    </ImageBackground>
+                </Pressable>
+              </View>
+              <View style={[tailwind('m-2'), styles.wGrid]}>
+                <Pressable  style={[tailwind('w-full h-48 flex-col items-start rounded-lg overflow-hidden'), styles.bgOrange]}
+                  onPress={() => setOpenSidebar(false)}>
+                    <ImageBackground 
+                      source={require('../assets/background-images/read.png')} 
+                      style={tailwind('absolute w-full h-full px-4 py-4')}  resizeMode="stretch" >
+                      <Text style={tailwind('text-sm font-medium text-white')}>My New Car</Text>
+                      <Text style={tailwind('text-xs text-white mt-2')}>Hussain Ismail Zaidi</Text>
+                    </ImageBackground>
+                </Pressable>
+              </View>
             </View>
+
+            <BottomMenu  navigation={navigation} />
+          </ImageBackground> 
         </View>
+        
+        { openSidebar ? 
+          <SideNav openSidebar={setOpenSidebar} navigation={navigation} /> : null }
+
     </View>
   );
 };
@@ -31,57 +89,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
-  textBlack: {
-    color: '#1F2123',
+  bgOrange: {
+    backgroundColor: '#FE5B24',
   },
-  textOrange: {
-    color: '#FF7324',
-  },
-  bgBlack: {
-    backgroundColor: '#1F2123',
-  },
+  wGrid: {
+    width: '45%',
+  }
 });
-
-
-{/* <View style={tailwind('mb-4')}>
-                    <TextInput
-                        style={tailwind('w-full h-10 bg-white p-6 rounded-xl mt-4 pl-12')}
-                        placeholder="Search a product" />
-                    <MyIcons name='search' width="16" height="16" />
-                    <MyIcons name='filter' width="20" height="17" />
-                </View>
-                <CategoryCarousel />
-                <View style={tailwind('mt-8')}>
-                    <View style={tailwind('flex flex-row justify-between items-center mb-5')}>
-                        <Text style={[tailwind('text-sm font-medium opacity-60'),styles.textBlack]}>Popular Products</Text>
-                        <Text style={tailwind('text-sm text-black opacity-40')}>View All</Text>
-                    </View>
-                    <PopularProductCarousel navigation={navigation}/>
-                </View>
-                <View style={tailwind('mt-8')}>
-                    <View style={tailwind('flex flex-row justify-between items-center mb-5')}>
-                        <Text style={[tailwind('text-sm font-medium opacity-60'),styles.textBlack]}>Recommendations for you</Text>
-                        <Text style={tailwind('text-sm text-black opacity-40')}>View All</Text>
-                    </View>
-                    <RecommmProductCarousel />
-                </View> */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// <Category source={require('../assets/chair.png')} name={'Chairs'} />
-// <PopularProduct source={require('../assets/sofa.png')} name={'Execute Sofa Chair'} price={'$12.4'} ratings={'5.0'} />
-{/* <Recommendation source={require('../assets/chair.png')} name={'Chairs'} price={'$12.4'} ratings={'5.0'} /> */}
-                    

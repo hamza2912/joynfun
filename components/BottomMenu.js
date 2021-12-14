@@ -9,21 +9,38 @@ export default function BottomMenu( props ) {
     const { navigation } = props;
     
     return (
-        <View  style={tailwind('w-full flex flex-row justify-between absolute bottom-0')}>
+        <View  style={styles.fixed}>
             <Pressable 
-                onPress={() => navigation.navigate('Details')}>
+                onPress={() => navigation.navigate('Home')}>
                 <MyIcons name='home' width="20" height="20" />
             </Pressable>
             <Pressable 
-                onPress={() => navigation.navigate('Details')}>
+                onPress={() => navigation.navigate('Home')}>
                 <MyIcons name='Write' width="20" height="20" />
             </Pressable>
             <Pressable 
-                onPress={() => navigation.navigate('Details')}>
+                onPress={() => navigation.navigate('Home')}>
                 <MyIcons name='Settings' width="21" height="20" />
             </Pressable>
         </View>
     );
     
 };
+
+
+const styles = StyleSheet.create({
+    fixed: {
+        position: 'fixed',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+        backgroundColor: 'white',
+        bottom: 0,
+        paddingTop: 16,
+        paddingBottom: 16,
+        paddingLeft: 32,
+        paddingRight: 32,
+    },
+  });
 
